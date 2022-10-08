@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+    {% block head %}
+        <style>
+        div.jumbotron{
+            text-align:left;
+            color:black;
+            align: left;
+
+            }
+
+
+        div.card-group{
+            width:80%;
+            height:20%;
+            margin:auto;
+            display: flex;
+        }
+
+        div.card {
+            color: DarkBlue;
+            font: 10px;
+        }
+
+        a:hover {
+        text-decoration:none;
+        }
+
+	</style>
+    {% endblock %}
+
+<body>
+    {% block content %}
+
+
+    <div class="jumbotron">
+        <h2 style="font-weight:bold;">Welcome.</h2>
+        <h4>Get Movie Recommendations!</h4>
+        <h4>Let's Go!</h4>
+    </div>
+
+
+    <div class="card-group">
+
+        {% for movie in movies %}
+        <div class="card" style="width:50px;height:100px;">
+            <a href="/show/{{ movie['movieId'] }}">
+            <img src= "{{ movie['img_link'] }}" class="card-img-top"/>
+            </a>
+            <div class="card-body">
+                <div class="card-text">
+                <a href="/show/{{ movie['movieId'] }}">
+                <h10> {{ movie['title'] }} </h10>
+                </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% endblock %}
+</body>
